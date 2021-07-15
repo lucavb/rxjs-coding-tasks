@@ -1,0 +1,23 @@
+{
+    "name": "mini-rxjs-sample",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "first": "ts-node src/task-01.ts",
+        "second": "ts-node src/task-02.ts",
+        "third": "ts-node src/task-03.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "rxjs": "^7.2.0"
+    },
+    "devDependencies": {
+        "@types/node": "^16.3.2",
+        "prettier": "^2.3.2",
+        "ts-node": "^10.1.0",
+        "typescript": "^4.3.5"
+    }
+}
