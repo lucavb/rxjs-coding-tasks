@@ -1,5 +1,5 @@
 import { exhaustMap, from, interval, map, Observable, of, switchMap, throwError } from 'rxjs';
-import { Commit } from './interfaces';
+import { CatBreed, Commit } from './interfaces';
 import axios from 'axios';
 
 export const getCommit = (): Observable<Commit> =>
@@ -20,3 +20,9 @@ export const getCommitUnstable = (time: number, failureRate = 10): Observable<Co
             return of(commit);
         }),
     );
+
+export const searchBreedsByName = (name: string): Observable<CatBreed[]> =>
+    from(axios(`https://api.thecatapi.com/v1/breeds/search?q=${name}`)).pipe(map((resp): CatBreed[] => resp.data));
+
+export const findOriginByBreedName = (name: string): Observable<string | undefined> =>
+    searchBreedsByName(name).pipe(map((breeds) => (breeds.length > 0 ? breeds[0].origin : undefined)));
